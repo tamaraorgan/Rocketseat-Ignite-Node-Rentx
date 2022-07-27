@@ -1,4 +1,4 @@
-import { Category } from '../../model/category.model'
+import { Category } from '../../entities/category.model'
 
 //DTO -> Data Transfer object - pega os valores da rota e transfere para o controllers
 interface ICreateCategoryDTO {
@@ -7,9 +7,9 @@ interface ICreateCategoryDTO {
 }
 
 interface ICategoriesRepository {
-  findByName(name: string): Category
-  list(): Category[]
-  create({ name, description }: ICreateCategoryDTO): void
+  findByName(name: string): Promise<Category>
+  list(): Promise<Category[]>
+  create({ name, description }: ICreateCategoryDTO): Promise<void>
 }
 
 export { ICategoriesRepository, ICreateCategoryDTO }

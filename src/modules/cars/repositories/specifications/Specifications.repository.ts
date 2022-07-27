@@ -1,49 +1,40 @@
-import { Specification } from '../../model/Specification.model'
+import { getRepository, Repository } from 'typeorm'
+import { Specification } from '../../entities/Specification.model'
 import {
-  ISpecificationsRepository,
-  ICreateSpecificationDTO
+    ISpecificationsRepository,
+    ICreateSpecificationDTO
 } from './ISpecifications.repository'
 
 class SpecificationsRepository implements ISpecificationsRepository {
-  private specifications: Specification[] = []
+    private specification: Repository<Specification>
 
-  private static INSTANCE: SpecificationsRepository
-
-  private constructor() {
-    this.specifications = []
-  }
-
-  public static getInstance(): SpecificationsRepository {
-    if (!SpecificationsRepository.INSTANCE) {
-      SpecificationsRepository.INSTANCE = new SpecificationsRepository()
+    constructor() {
+        this.specification = getRepository(Specification)
     }
-    return SpecificationsRepository.INSTANCE
-  }
 
-  findByName(name: string) {
-    const specification = this.specifications.find(
-      (specification) => specification.name === name
-    )
+    async findByName(name: string): Promise<Specification> {
+        const specification = await this.specification.findOne({ name })
 
-    return specification
-  }
+        return specification
+    }
 
-  list(): Specification[] {
-    return this.specifications
-  }
+    async list(): Promise<Specification[]> {
+        const specifications = await this.specification.find()
 
-  create({ name, description }: ICreateSpecificationDTO): void {
-    const specification = new Specification()
+        return specifications
+    }
 
-    Object.assign(specification, {
-      name,
-      description,
-      created_at: new Date()
-    })
+    async create({
+        name,
+        description
+    }: ICreateSpecificationDTO): Promise<void> {
+        const specification = await this.specification.create({
+            name,
+            description
+        })
 
-    this.specifications.push(specification)
-  }
+        this.specification.save(specification)
+    }
 }
 
 export { SpecificationsRepository }
-

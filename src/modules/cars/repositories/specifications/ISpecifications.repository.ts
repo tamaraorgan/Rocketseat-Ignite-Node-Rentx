@@ -1,4 +1,4 @@
-import { Specification } from '../../model/Specification.model'
+import { Specification } from '../../entities/Specification.model'
 
 //DTO -> Data Transfer object - pega os valores da rota e transfere para o controllers
 interface ICreateSpecificationDTO {
@@ -7,9 +7,9 @@ interface ICreateSpecificationDTO {
 }
 
 interface ISpecificationsRepository {
-   findByName(name: string): Specification
-   list(): Specification[]
-   create({ name, description }: ICreateSpecificationDTO): void
+   findByName(name: string): Promise<Specification>
+   list(): Promise<Specification[]>
+   create({ name, description }: ICreateSpecificationDTO): Promise<void>
 }
 
 export { ISpecificationsRepository, ICreateSpecificationDTO }

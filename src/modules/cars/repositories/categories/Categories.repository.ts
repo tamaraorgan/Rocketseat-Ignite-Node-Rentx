@@ -1,52 +1,37 @@
-import { Category } from '../../model/category.model'
+import { getRepository, Repository } from 'typeorm'
+import { Category } from '../../entities/category.model'
 import {
-  ICategoriesRepository,
-  ICreateCategoryDTO
+    ICategoriesRepository,
+    ICreateCategoryDTO
 } from './ICategories.repository'
 
 class CategoriesRepository implements ICategoriesRepository {
-  private categories: Category[] = []
+    private repository: Repository<Category>
 
-  private static INSTANCE: CategoriesRepository
-
-  private constructor() {
-    this.categories = []
-  }
-
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository()
+    constructor() {
+        this.repository = getRepository(Category)
     }
-    return CategoriesRepository.INSTANCE
-  }
 
-  findByName(name: string) {
-    const category = this.categories.find((category) => category.name === name)
+    async findByName(name: string): Promise<Category> {
+        const category = await this.repository.findOne({ name })
 
-    return category
-  }
+        return category
+    }
 
-  list(): Category[] {
-    return this.categories
-  }
+    async list(): Promise<Category[]> {
+        const categories = await this.repository.find()
 
-  create({ name, description }: ICreateCategoryDTO): void {
-    // Quando usamos o new é para instanciar uma classe ou seja para poder usar ela
-    const category = new Category()
+        return categories
+    }
 
-    /* O método Object.assign()é usado para copiar os valores de todas as propriedades como 
-      enumeráveis ​​de um ou mais objetos de origem para um destino de objeto . 
-      Este método irá retornar o objeto destino . 
-   */
-    Object.assign(category, {
-      name,
-      description,
-      created_at: new Date()
-    })
+    async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+        const category = this.repository.create({
+            name,
+            description
+        })
 
-    this.categories.push(category)
-  }
+        await this.repository.save(category)
+    }
 }
 
 export { CategoriesRepository }
-
