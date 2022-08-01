@@ -4,7 +4,7 @@ import { ListSpecificationsUseCase } from './ListSpecifications.useCase'
 
 class ListSpecificationController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const listSpecificationUseCase = container.resolver(
+        const listSpecificationUseCase = container.resolve(
             ListSpecificationsUseCase
         )
 
