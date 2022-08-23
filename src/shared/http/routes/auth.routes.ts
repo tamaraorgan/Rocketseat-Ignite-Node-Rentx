@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { AuthUserController } from '../modules/accounts/useCases/AuthUsers/AuthUser.controller'
+import { AuthUserController } from '../../../modules/accounts/useCases/AuthUsers/AuthUser.controller'
 
 const authRouter = express.Router()
 

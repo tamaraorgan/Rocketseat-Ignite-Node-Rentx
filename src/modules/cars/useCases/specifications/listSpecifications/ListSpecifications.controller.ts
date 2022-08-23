@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
+
 import { ListSpecificationsUseCase } from './ListSpecifications.useCase'
 
 class ListSpecificationController {
