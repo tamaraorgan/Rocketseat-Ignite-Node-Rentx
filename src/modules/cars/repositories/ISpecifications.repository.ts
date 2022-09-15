@@ -1,4 +1,5 @@
-import { Specification } from '../../../infra/typeorm/entities/Specification.model'
+import { Specification } from "../infra/typeorm/entities/Specification.model"
+
 
 //DTO -> Data Transfer object - pega os valores da rota e transfere para o controllers
 interface ICreateSpecificationDTO {
