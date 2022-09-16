@@ -10,9 +10,9 @@ import { IUsersRepository } from '../../modules/accounts/repositories/IUsers.rep
 import { UsersRepository } from '../../modules/accounts/infra/typeorm/repositories/Users.repository'
 
 import { ICarsRepository } from '../../modules/cars/repositories/ICars.repository'
-import { CarsRepository } from '../../modules/cars/infra/typeorm/repositories/CarsRepository'
-
-
+import { CarsRepository } from '../../modules/cars/infra/typeorm/repositories/Cars.repository'
+import { IImagesCarRepository } from '../../modules/cars/repositories/IImagesCar.repository'
+import { ImagesCarRepository } from '../../modules/cars/infra/typeorm/repositories/ImagesCar.repository'
 
 container.registerSingleton<ICategoriesRepository>(
     'CategoriesRepository',
@@ -29,8 +29,9 @@ container.registerSingleton<IUsersRepository>(
     UsersRepository
 )
 
+container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository)
 
-container.registerSingleton<ICarsRepository>(
-    "CarsRepository",
-    CarsRepository
+container.registerSingleton<IImagesCarRepository>(
+    'ImagesCarRepository',
+    ImagesCarRepository
 )

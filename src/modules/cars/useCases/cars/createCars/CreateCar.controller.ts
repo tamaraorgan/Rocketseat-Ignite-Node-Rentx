@@ -15,7 +15,7 @@ class CreateCarController {
         } = request.body
         const createCarUseCase = container.resolve(CreateCarUseCase)
 
-        const car = await createCarUseCase.execute({
+        await createCarUseCase.execute({
             name,
             description,
             daily_rate,

@@ -3,12 +3,6 @@ import { ICategoriesRepository, ICreateCategoryDTO } from '../../../repositories
 
 import { Category } from '../entities/category.model'
 
-
-
-
-
-
-
 class CategoriesRepository implements ICategoriesRepository {
     private repository: Repository<Category>
 
