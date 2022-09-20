@@ -1,8 +1,8 @@
 import express from 'express'
 
-import { ensureAuth } from '../middlewares/ensureAuth'
-import { CreateSpecificationController } from '../../../modules/cars/useCases/specifications/createSpecification/CreateSpecification.controller'
-import { ListSpecificationController } from '../../../modules/cars/useCases/specifications/listSpecifications/ListSpecifications.controller'
+import { ensureAuth } from '../middlewares/ensureAuth.middleware'
+import { CreateSpecificationController } from '../../../modules/cars/use-cases/specifications/createSpecification/CreateSpecification.controller'
+import { ListSpecificationController } from '../../../modules/cars/use-cases/specifications/listSpecifications/ListSpecifications.controller'
 
 const createSpecificationController = new CreateSpecificationController()
 const listSpecificationsController = new ListSpecificationController()

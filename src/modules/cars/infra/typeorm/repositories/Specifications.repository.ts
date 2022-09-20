@@ -4,7 +4,7 @@ import {
     ISpecificationsRepository
 } from '../../../repositories/ISpecifications.repository'
 
-import { Specification } from '../entities/Specification.model'
+import { Specification } from '../entities/specification.model'
 
 class SpecificationsRepository implements ISpecificationsRepository {
     private repository: Repository<Specification>

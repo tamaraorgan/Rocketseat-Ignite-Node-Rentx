@@ -1,5 +1,5 @@
-import { ICreateUserDTO } from "../dtos/ICreateUserDTO"
-import { User } from "../infra/typeorm/entities/User"
+import { ICreateUserDTO } from "../dtos/ICreateUser.dto"
+import { User } from "../infra/typeorm/entities/User.model"
 
 
 interface IUsersRepository {

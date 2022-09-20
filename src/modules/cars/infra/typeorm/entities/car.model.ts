@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
 import { Category } from './category.model'
-import { Specification } from './Specification.model'
+import { Specification } from './specification.model'
 
 @Entity('cars')
 class Car {

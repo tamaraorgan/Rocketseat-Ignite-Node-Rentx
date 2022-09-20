@@ -1,5 +1,5 @@
 {
-    "cSpell.words": ["dtos", "postgres", "rentx", "typeorm"],
+    "cSpell.words": ["dayjs", "dtos", "postgres", "rentx", "typeorm"],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#3399ff",
         "activityBar.activeBorder": "#bf0060",

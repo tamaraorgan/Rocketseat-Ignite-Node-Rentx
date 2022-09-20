@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js remove tsconfig-paths
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add dayjs
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\OpenJDK\openjdk-11.0.14.1_1\bin;C:\Program Files (x86)\Yarn\bin\;C:\Android\Sdk\emulator;C:\Android\Sdk\tools;C:\Android\Sdk\tools\bin;C:\Android\Sdk\platform-tools;C:\Users\tamar\AppData\Local\Yarn\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\tamar\AppData\Local\Microsoft\WindowsApps;C:\Users\tamar\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\tamar\AppData\Roaming\npm;C:\Users\tamar\AppData\Local\Yarn\bin;C:\ProgramData\tamar\GitHubDesktop\bin
@@ -25,9 +25,10 @@ npm manifest:
     "author": "Tamara Organ",
     "license": "MIT",
     "scripts": {
-      "dev": "ts-node-dev --inspect --transpile-only --poll --ignore-watch node_modules --respawn src/server.ts",
+      "dev": "ts-node-dev --inspect --transpile-only --poll --ignore-watch node_modules --respawn src/shared/http/server.ts",
       "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-      "test": "jest"
+      "test": "jest",
+      "seed:admin": "ts-node-dev src/shared/typeorm/seed/admin.ts"
     },
     "dependencies": {
       "bcryptjs": "^2.4.3",
@@ -3212,15 +3213,6 @@ Lockfile:
       make-error "^1.1.1"
       v8-compile-cache-lib "^3.0.1"
       yn "3.1.1"
-  
-  tsconfig-paths@^4.1.0:
-    version "4.1.0"
-    resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-4.1.0.tgz#f8ef7d467f08ae3a695335bf1ece088c5538d2c1"
-    integrity sha512-AHx4Euop/dXFC+Vx589alFba8QItjF+8hf8LtmuiCwHyI4rHXQtOOENaM8kvYf5fR0dRChy3wzWIZ9WbB7FWow==
-    dependencies:
-      json5 "^2.2.1"
-      minimist "^1.2.6"
-      strip-bom "^3.0.0"
   
   tsconfig@^7.0.0:
     version "7.0.0"

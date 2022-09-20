@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm'
-import { ICreateCarsDTO } from '../../../dtos/ICreateCarsDTO'
+import { ICreateCarsDTO } from '../../../dtos/ICreateCars.dto'
 import { ICarsRepository } from '../../../repositories/ICars.repository'
 import { Car } from '../entities/car.model'
 

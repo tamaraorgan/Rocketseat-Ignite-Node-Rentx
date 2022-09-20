@@ -1,4 +1,4 @@
-import { ICreateCarsDTO } from '../dtos/ICreateCarsDTO'
+import { ICreateCarsDTO } from '../dtos/ICreateCars.dto'
 import { Car } from '../infra/typeorm/entities/car.model'
 
 interface ICarsRepository {

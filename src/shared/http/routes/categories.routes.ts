@@ -1,11 +1,11 @@
 import express from 'express'
 import multer from 'multer'
 
-import { CreateCategoryController } from '../../../modules/cars/useCases/categories/createCategory/CreateCategory.controller'
-import { ImportCategoryController } from '../../../modules/cars/useCases/categories/importCategory/ImportCategory.controller'
-import { ListCategoriesController } from '../../../modules/cars/useCases/categories/listCategories/ListCategories.controller'
-import { ensureAdmin } from '../middlewares/ensureAdmin'
-import { ensureAuth } from '../middlewares/ensureAuth'
+import { CreateCategoryController } from '../../../modules/cars/use-cases/categories/createCategory/CreateCategory.controller'
+import { ImportCategoryController } from '../../../modules/cars/use-cases/categories/importCategory/ImportCategory.controller'
+import { ListCategoriesController } from '../../../modules/cars/use-cases/categories/listCategories/ListCategories.controller'
+import { ensureAdmin } from '../middlewares/ensureAdmin.middleware'
+import { ensureAuth } from '../middlewares/ensureAuth.middleware'
 
 const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
