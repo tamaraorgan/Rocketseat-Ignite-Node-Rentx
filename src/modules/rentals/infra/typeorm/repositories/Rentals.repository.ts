@@ -9,15 +9,32 @@ class RentalsRepository implements IRentalsRepository {
     constructor() {
         this.repository = getRepository(Rental)
     }
+    async findByUser(user_id: string): Promise<Rental[]> {
+        const rentals = await this.repository.find({
+            where: { user_id },
+            relations: ['car']
+        })
 
-    async findOpenRentalByCar(id: string): Promise<Rental> {
-        const openByCar = await this.repository.findOne(id)
+        return rentals
+    }
+    async findById(id: string): Promise<Rental> {
+        const rental = await this.repository.findOne(id)
+
+        return rental
+    }
+
+    async findOpenRentalByCar(car_id: string): Promise<Rental> {
+        const openByCar = await this.repository.findOne({
+            where: { car_id, end_date: null }
+        })
 
         return openByCar
     }
 
-    async findOpenRentalByUser(id: string): Promise<Rental> {
-        const openByUser = await this.repository.findOne(id)
+    async findOpenRentalByUser(user_id: string): Promise<Rental> {
+        const openByUser = await this.repository.findOne({
+            where: { user_id, end_date: null }
+        })
 
         return openByUser
     }
@@ -25,12 +42,18 @@ class RentalsRepository implements IRentalsRepository {
     async create({
         user_id,
         car_id,
-        expected_return_date
+        expected_return_date,
+        id,
+        end_date,
+        total
     }: ICreateRentalDTO): Promise<Rental> {
         const rental = this.repository.create({
             user_id,
             car_id,
-            expected_return_date
+            expected_return_date,
+            id,
+            end_date,
+            total
         })
 
         await this.repository.save(rental)

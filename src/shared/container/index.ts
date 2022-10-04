@@ -42,3 +42,4 @@ container.registerSingleton<IRentalsRepository>(
     'RentalsRepository',
     RentalsRepository
 )
+

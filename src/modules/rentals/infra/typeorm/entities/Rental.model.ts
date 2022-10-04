@@ -3,20 +3,26 @@ import {
     CreateDateColumn,
     Entity,
     JoinColumn,
+    ManyToOne,
     OneToOne,
     PrimaryColumn,
     UpdateDateColumn
 } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
+import { Car } from '../../../../cars/infra/typeorm/entities/car.model'
 
 @Entity('rentals')
 class Rental {
     @PrimaryColumn()
     id: string
 
+    @ManyToOne(() => Car)
+    @JoinColumn({ name: 'car_id' })
+    car: Car
+
     @Column()
     car_id: string
-    
+
     @Column()
     user_id: string
 

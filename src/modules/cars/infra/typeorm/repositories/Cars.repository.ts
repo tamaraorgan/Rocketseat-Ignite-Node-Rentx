@@ -9,8 +9,7 @@ class CarsRepository implements ICarsRepository {
     constructor() {
         this.repository = getRepository(Car)
     }
-
-    async findById ( id: string ): Promise<Car> {
+    async findById(id: string): Promise<Car> {
         return this.repository.findOne(id)
     }
 
@@ -54,7 +53,6 @@ class CarsRepository implements ICarsRepository {
         brand?: string,
         category_id?: string
     ): Promise<Car[]> {
-
         const carsQuery = await this.repository
             .createQueryBuilder('c')
             .where('available = :available', { available: true })
@@ -70,9 +68,20 @@ class CarsRepository implements ICarsRepository {
         }
 
         const cars = await carsQuery.getMany()
-
+''
         return cars
     }
+
+    async updateAvailable(id: string, available: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ available })
+            .where('id = :id')
+            .setParameters({ id })
+            .execute()
+    }
+    	
 }
 
 export { CarsRepository }
